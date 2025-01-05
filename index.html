@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeAI</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #160A29;
+            margin: 0;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        h1 {
+            background: linear-gradient(to right, #8A2BE2, #9B4DFF, #FF69B4, #00BFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background: linear-gradient(to right, #8A2BE2, #00BFFF);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(to right, #6a1b9a, #007bb5);
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #E0E0E0;
+            line-height: 1.6;
+            margin-top: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            color: #E0E0E0;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        .dapps-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #8A2BE2, #00BFFF);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .dapps-button:hover {
+            background: linear-gradient(to right, #6a1b9a, #007bb5);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #160A29;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00BFFF;
+            z-index: 1000;
+        }
+
+        .popup p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .popup-button {
+            display: inline-block;
+            background: linear-gradient(to right, #8A2BE2, #00BFFF);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .popup-button:hover {
+            background: linear-gradient(to right, #6a1b9a, #007bb5);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .buy-button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+
+            .logo {
+                width: 80px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .footer {
+                font-size: 12px;
+            }
+
+            .dapps-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .popup p {
+                font-size: 16px;
+            }
+
+            .popup-button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>FakeAI</h1>
+        <img src="./LOGO.png" alt="Logo" class="logo">
+        <a href="#" class="buy-button">BUY</a>
+        <p class="description">AI-powered Meme Coin on Cardano – just for fun! Buy, sell, and enjoy the memes while riding the crypto wave. Let’s make crypto fun again!</p>
+    </div>
+
+    <div class="footer">
+        Powered by FakeAI - 2025
+    </div>
+
+    <button class="dapps-button" onclick="showPopup()">Launch dApp</button>
+
+    <div class="popup" id="popup">
+        <p>Coming soon</p>
+        <a href="#" class="popup-button" onclick="closePopup()">Close</a>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
