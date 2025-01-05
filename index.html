@@ -262,6 +262,21 @@
             margin-bottom: 10px;
             list-style-type: none;
         }
+
+        /* Estilo para os botões de compra */
+        .buy-popup-button {
+            background: linear-gradient(to right, #8A2BE2, #FF69B4);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .buy-popup-button:hover {
+            background: linear-gradient(to right, #6a1b9a, #FF1493);
+        }
     </style>
 </head>
 <body>
@@ -279,7 +294,7 @@
         <h1>FakeAI</h1>
         <img src="./LOGO.png" alt="Logo" class="logo">
         <div class="button-container">
-            <a href="#" class="buy-button">BUY</a>
+            <a href="#" class="buy-button" onclick="togglePopup('buyPopup')">BUY</a>
             <a href="#" class="tokenomics-button" onclick="togglePopup('tokenomicsPopup')">Tokenomics</a>
             <a href="#" class="launch-dapp-button" onclick="togglePopup('dappPopup')">dApp</a>
         </div>
@@ -288,6 +303,18 @@
 
     <div class="footer">
         Powered by FakeAI - 2025
+    </div>
+
+    <!-- Popup for BUY button -->
+    <div class="popup" id="buyPopup">
+        <h2>Choose an option to purchase:</h2>
+        <div class="button-container">
+            <a href="https://pay.nmkr.io/?p=ac6fbaa6b12f4036bf367a1a2401b26a&c=500" class="buy-popup-button">500 Tokens - ₳ 25</a>
+            <a href="https://pay.nmkr.io/?p=ac6fbaa6b12f4036bf367a1a2401b26a&c=1000" class="buy-popup-button">1000 Tokens - ₳ 50</a>
+            <a href="https://pay.nmkr.io/?p=ac6fbaa6b12f4036bf367a1a2401b26a&c=1500" class="buy-popup-button">1500 Tokens - ₳ 75</a>
+            <a href="https://pay.nmkr.io/?p=ac6fbaa6b12f4036bf367a1a2401b26a&c=2000" class="buy-popup-button">2000 Tokens - ₳ 100</a>
+        </div>
+        <a href="#" class="popup-button" onclick="closePopup('buyPopup')">Close</a>
     </div>
 
     <div class="popup" id="dappPopup">
@@ -353,7 +380,6 @@
                 <li class="roadmap-item">• Listing of other Meme Coins on the DEX, allowing users to trade safely and efficiently within the Cardano network.</li>
                 <li class="roadmap-item">• Implementation of decentralized governance (DAO) so token holders can participate actively in the project's and DEX's evolution.</li>
             </ul>
-
             <p class="roadmap-title">7. Future Innovations and Project Expansion</p>
             <ul>
                 <li class="roadmap-item">• Continued expansion of the FakeAI ecosystem with new features and strategic partnerships.</li>
@@ -361,34 +387,31 @@
                 <li class="roadmap-item">• Continuous improvement of AI to optimize the platform and enhance the user experience.</li>
                 <li class="roadmap-item">• Expansion of partnerships with other Meme Coin projects and integration with external platforms and services to broaden the project's reach.</li>
             </ul>
+
         </div>
         <a href="#" class="popup-button" onclick="closePopup('roadmapPopup')">Close</a>
     </div>
 
     <script>
-        async function fetchAdaPrice() {
-            try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd');
-                const data = await response.json();
-                const adaPrice = data.cardano.usd;
-                document.getElementById('adaPrice').innerText = `$${adaPrice}`;
-            } catch (error) {
-                console.error('Error fetching ADA price:', error);
-                document.getElementById('adaPrice').innerText = 'Error';
-            }
+        function togglePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
         }
 
-        fetchAdaPrice();
-
-        function togglePopup(id) {
-            const popup = document.getElementById(id);
-            popup.style.display = (popup.style.display === "block") ? "none" : "block";
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
         }
 
-        function closePopup(id) {
-            const popup = document.getElementById(id);
-            popup.style.display = "none";
+        function getAdaPrice() {
+            fetch('https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('adaPrice').textContent = data.cardano.usd;
+                })
+                .catch(error => console.log('Error fetching ADA price:', error));
         }
+
+        getAdaPrice();
     </script>
 
 </body>
